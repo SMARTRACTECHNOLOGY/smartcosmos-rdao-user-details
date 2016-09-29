@@ -1,0 +1,8 @@
+project:
+  artifactId: smartcosmos-test-user-details
+spring:
+  application:
+    name: @project.artifactId@
+
+security:
+  ignored: authenticate

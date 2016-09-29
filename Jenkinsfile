@@ -1,0 +1,3 @@
+smartcosmosMavenBuild {
+  isPublicArtifact = true
+}
