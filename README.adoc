@@ -20,8 +20,8 @@ In addition, it includes a default implementation of `AuthenticateUserService` w
 [width="100%",options="header"]
 |====================
 | Field | Format | Default | Required | Description
-| `name` | Username as registered in Stormpath | | yes |
-| `credentials` | Password for user account | | yes |
+| `name` | Username | | yes |
+| `credentials` | User password | | yes |
 |====================
 
 
