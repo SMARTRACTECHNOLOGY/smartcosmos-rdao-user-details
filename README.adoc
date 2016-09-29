@@ -14,7 +14,7 @@ In addition, it includes a default implementation of `AuthenticateUserService` w
 
 *Available methods*
 
-* <<create1, Create - `POST /authenticate`>>
+* <<create1, Authenticate - `POST /authenticate`>>
 
 === JSON Fields
 [width="100%",options="header"]
