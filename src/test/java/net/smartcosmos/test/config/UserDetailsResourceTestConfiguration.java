@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import net.smartcosmos.userdetails.service.AuthenticateUserService;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "net.smartcosmos")
-public class UserDetailsTestConfiguration {
+@ComponentScan(basePackages = "net.smartcosmos.userdetails")
+public class UserDetailsResourceTestConfiguration {
 
     @Bean
     public AuthenticateUserService authenticateUserService() {

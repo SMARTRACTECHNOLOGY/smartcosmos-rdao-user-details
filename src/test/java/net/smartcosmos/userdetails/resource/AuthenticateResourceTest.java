@@ -24,7 +24,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import net.smartcosmos.test.config.UserDetailsTestConfiguration;
+import net.smartcosmos.test.config.UserDetailsResourceTestConfiguration;
 import net.smartcosmos.userdetails.domain.UserDetails;
 import net.smartcosmos.userdetails.domain.rest.AuthenticateDetails;
 import net.smartcosmos.userdetails.domain.rest.AuthenticateRequest;
@@ -46,8 +46,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static net.smartcosmos.domain.rest.ErrorResponse.CODE_ERROR;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = { UserDetailsResourceTestConfiguration.class })
 @WebAppConfiguration
-@SpringApplicationConfiguration(classes = { UserDetailsTestConfiguration.class })
 @ActiveProfiles("test")
 public class AuthenticateResourceTest {
 
@@ -146,8 +146,6 @@ public class AuthenticateResourceTest {
             .andExpect(jsonPath("$.passwordHash", not(isEmptyOrNullString())))
             .andExpect(jsonPath("$.authorities", hasSize(new GreaterThan<>(0))))
             .andReturn();
-
-        System.out.println("");
     }
 
     @Test
