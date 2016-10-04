@@ -13,8 +13,6 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
-import static net.smartcosmos.userdetails.domain.rest.AuthenticateRequest.CREDENTIALS;
-
 /**
  * DTO representation of a serialized {@link UsernamePasswordAuthenticationToken}.
  */
@@ -22,8 +20,8 @@ import static net.smartcosmos.userdetails.domain.rest.AuthenticateRequest.CREDEN
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@ToString(exclude = CREDENTIALS)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(exclude = "credentials")  // constants don't work here
 public class AuthenticateRequest {
 
     public static final String DETAILS = "details";

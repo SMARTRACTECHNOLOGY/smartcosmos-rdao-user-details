@@ -14,8 +14,6 @@ import lombok.ToString;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import static net.smartcosmos.userdetails.domain.UserDetails.PASSWORD_HASH;
-
 /**
  * This is the response from the User Details Service that will contain the necessary
  * information for caching purposes. While not required, if the password hash is filled
@@ -23,9 +21,9 @@ import static net.smartcosmos.userdetails.domain.UserDetails.PASSWORD_HASH;
  * native Spring Security Cache.
  */
 @Data
-@ToString(exclude = PASSWORD_HASH)
 @JsonIgnoreProperties({ "version" })
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
+@ToString(exclude = "passwordHash")  // constants don't work here
 public class UserDetails {
 
     public static final String TENANT_URN = "tenantUrn";

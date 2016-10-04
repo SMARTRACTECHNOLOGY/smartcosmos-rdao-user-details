@@ -8,14 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import static net.smartcosmos.userdetails.domain.rest.AuthenticateDetails.PASSWORD;
-
 @Data
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@ToString(exclude = PASSWORD)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@ToString(exclude = { "password" }) // constants don't work here
 public class AuthenticateDetails {
 
     public static final String GRANT_TYPE = "grant_type";
