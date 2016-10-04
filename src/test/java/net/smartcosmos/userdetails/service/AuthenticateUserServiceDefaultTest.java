@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import net.smartcosmos.domain.rest.ErrorResponse;
 import net.smartcosmos.userdetails.domain.UserDetails;
 import net.smartcosmos.userdetails.domain.rest.AuthenticateRequest;
 
@@ -117,6 +118,32 @@ public class AuthenticateUserServiceDefaultTest {
         assertTrue(response.hasBody());
 
         verify(userDetailsService, times(1)).getUserDetails(anyString(), anyString());
+        verifyNoMoreInteractions(userDetailsService);
+    }
+
+    @Test
+    public void thatAuthenticationForInvalidResponseDataFails() {
+
+        UserDetails userDetails = UserDetails.builder()
+            .username("user")
+            .build();
+        ErrorResponse expectedResponse = new ErrorResponse(ErrorResponse.CODE_ERROR, "Invalid data returned");
+        when(userDetailsService.getUserDetails(anyString(), anyString())).thenReturn(userDetails);
+        when(userDetailsService.isValid(eq(userDetails))).thenReturn(false);
+
+        AuthenticateRequest request = AuthenticateRequest.builder()
+            .credentials("password")
+            .name("user")
+            .build();
+
+        ResponseEntity<?> response = authenticationService.authenticateUser(request);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertTrue(response.getBody() instanceof ErrorResponse);
+        assertEquals(expectedResponse, response.getBody());
+
+        verify(userDetailsService, times(1)).getUserDetails(anyString(), anyString());
+        verify(userDetailsService, times(1)).isValid(anyObject());
         verifyNoMoreInteractions(userDetailsService);
     }
 
