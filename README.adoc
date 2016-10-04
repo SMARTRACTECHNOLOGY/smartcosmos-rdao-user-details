@@ -32,8 +32,6 @@ In addition, it includes a default implementation of `AuthenticateUserService` w
 
 Depending on the actual application configuration, this endpoint may require authentication.
 
-// TODO: Insert actual request JSON
-
 ----
 POST /authenticate
 ----
@@ -41,7 +39,15 @@ POST /authenticate
 ----
 {
     "name": "alice@example.com",
-    "credentials": "Passw0rd"
+    "credentials": "Passw0rd",
+    "details": {
+        "grantType": "password",
+        "scope": "read",
+        "username": "alice@example.com"
+    },
+    "authorities": [],
+    "authenticated": false,
+    "principal": "alice@example.com"
 }
 ----
 
