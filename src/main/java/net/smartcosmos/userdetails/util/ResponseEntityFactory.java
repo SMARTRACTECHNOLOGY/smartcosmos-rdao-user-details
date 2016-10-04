@@ -22,7 +22,7 @@ public class ResponseEntityFactory {
      */
     public static ResponseEntity<?> success(UserDetails userDetails) {
 
-        return ResponseEntity.ok(userDetails);
+        return buildResponse(HttpStatus.OK, userDetails);
     }
 
     /**
@@ -33,8 +33,7 @@ public class ResponseEntityFactory {
      */
     public static ResponseEntity<?> invalidUsernameOrPassword() {
 
-        return ResponseEntity.badRequest()
-            .body(new ErrorResponse(CODE_ERROR, "Invalid username or password"));
+        return buildResponse(HttpStatus.BAD_REQUEST, new ErrorResponse(CODE_ERROR, "Invalid username or password"));
     }
 
     /**
@@ -45,8 +44,7 @@ public class ResponseEntityFactory {
      */
     public static ResponseEntity<?> invalidDataReturned() {
 
-        return ResponseEntity.badRequest()
-            .body(new ErrorResponse(CODE_ERROR, "Invalid data returned"));
+        return buildResponse(HttpStatus.BAD_REQUEST, new ErrorResponse(CODE_ERROR, "Invalid data returned"));
     }
 
     /**
@@ -60,8 +58,20 @@ public class ResponseEntityFactory {
      */
     public static ResponseEntity<?> errorResponse(HttpStatus httpStatus, Integer code, String message) {
 
+        return buildResponse(httpStatus, new ErrorResponse(code, message));
+    }
+
+    /**
+     * Internal helper method that builds the actual response entity including {@code Content-Type} header.
+     *
+     * @param httpStatus the HTTP status code
+     * @param responseBody the response body
+     * @return the response entity
+     */
+    protected static ResponseEntity<?> buildResponse(HttpStatus httpStatus, Object responseBody) {
+
         return ResponseEntity.status(httpStatus)
             .contentType(MediaType.APPLICATION_JSON_UTF8)
-            .body(new ErrorResponse(code, message));
+            .body(responseBody);
     }
 }
