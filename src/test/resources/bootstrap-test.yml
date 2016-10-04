@@ -3,6 +3,3 @@ project:
 spring:
   application:
     name: @project.artifactId@
-
-security:
-  ignored: authenticate
