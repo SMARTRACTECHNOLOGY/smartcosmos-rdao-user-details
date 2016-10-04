@@ -17,6 +17,26 @@ public class AuthenticateRequestTest {
     private Validator validator = Validation.buildDefaultValidatorFactory()
         .getValidator();
 
+    // region toString
+
+    @Test
+    public void thatToStringIgnoresCredentials() {
+
+        final String passwordValue = "somePassword";
+
+        AuthenticateRequest request = AuthenticateRequest.builder()
+            .name("username")
+            .credentials(passwordValue)
+            .build();
+
+        String requestString = request.toString();
+
+        assertFalse(requestString.contains(CREDENTIALS));
+        assertFalse(requestString.contains(passwordValue));
+    }
+
+    // endregion
+
     // region Validation
 
     @Test

@@ -93,6 +93,26 @@ public class UserDetailsTest {
 
     // endregion
 
+    // region toString
+
+    @Test
+    public void thatToStringIgnoresPasswordHash() {
+
+        final String passwordHashValue = "somePasswordHash";
+
+        UserDetails userDetails = UserDetails.builder()
+            .username("username")
+            .passwordHash(passwordHashValue)
+            .build();
+
+        String userDetailsString = userDetails.toString();
+
+        assertFalse(userDetailsString.contains(PASSWORD_HASH));
+        assertFalse(userDetailsString.contains(passwordHashValue));
+    }
+
+    // endregion
+
     // region Validation
 
     @Test
