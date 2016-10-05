@@ -69,9 +69,6 @@ public class AuthenticateResourceTest {
             .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
             .findAny()
             .get();
-
-        Assert.assertNotNull("the JSON message converter must not be null",
-                             this.mappingJackson2HttpMessageConverter);
     }
 
     @Before
