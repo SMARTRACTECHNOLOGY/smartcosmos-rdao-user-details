@@ -45,7 +45,7 @@ public class UserDetailsAutoConfiguration {
      */
     @Bean
     @ConditionalOnMissingBean
-    public javax.validation.Validator localValidatorFactoryBean() {
+    public javax.validation.Validator validator() {
 
         log.info("LocalValidatorFactoryBean being started.");
         return new LocalValidatorFactoryBean();
