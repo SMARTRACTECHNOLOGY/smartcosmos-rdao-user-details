@@ -1,0 +1,82 @@
+= SMART COSMOS User Details
+SMARTRAC Technology Fletcher Inc <api@smartrac-group.com>
+ifdef::env-github[:USER: SMARTRACTECHNOLOGY]
+ifdef::env-github[:REPO: smartcosmos-user-details]
+ifdef::env-github[:BRANCH: master]
+
+image::https://jenkins.smartcosmos.net/buildStatus/icon?job={USER}/{REPO}/{BRANCH}[Build Status, link=https://jenkins.smartcosmos.net/job/{USER}/job/{REPO}/job/{BRANCH}/]
+
+The SMART COSMOS User Details library provides the common `/authenticate` endpoint used by the https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server[Auth Server] to retrieve user details for token generation, and also includes the corresponding request and response models.
+
+In addition, it includes a default implementation of `AuthenticateUserService` which is available via auto-configuration.
+
+== REST API
+
+*Available methods*
+
+* <<authenticate, Authenticate - `POST /authenticate`>>
+
+=== JSON Fields
+[width="100%",options="header"]
+|====================
+| Field | Format | Default | Required | Description
+| `name` | Username | | yes |
+| `credentials` | User password | | yes |
+|====================
+
+
+=== API Endpoints
+
+[[authenticate]]
+==== Authenticate - `POST /authenticate`
+
+Depending on the actual application configuration, this endpoint may require authentication.
+
+----
+POST /authenticate
+----
+[source,json]
+----
+{
+    "name": "alice@example.com",
+    "credentials": "Passw0rd",
+    "details": {
+        "grantType": "password",
+        "scope": "read",
+        "username": "alice@example.com"
+    },
+    "authorities": [],
+    "authenticated": false,
+    "principal": "alice@example.com"
+}
+----
+
+.Response
+----
+200 OK
+----
+[source,json]
+----
+{
+   "authorities" : [
+      "https://authorities.smartcosmos.net/things/read"
+   ],
+   "tenantUrn" : "urn:account:uuid:53f452c2-5a01-44fd-9956-3ecff7c32b30",
+   "userUrn" : "urn:user:uuid:53f452c2-5a01-44fd-9956-3ecff7c32b30",
+   "name" : "alice@example.com",
+   "passwordHash" : ""
+}
+----
+----
+400 Bad Request
+----
+[source,json]
+----
+{
+   "code" : 1,
+   "message" : "Invalid username or password"
+}
+----
+----
+401 Unauthorized
+----

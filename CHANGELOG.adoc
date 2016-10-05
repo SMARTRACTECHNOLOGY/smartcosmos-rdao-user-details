@@ -1,0 +1,5 @@
+= SMART COSMOS User Details Release Notes
+
+== UNRELEASED
+
+Initial release.
