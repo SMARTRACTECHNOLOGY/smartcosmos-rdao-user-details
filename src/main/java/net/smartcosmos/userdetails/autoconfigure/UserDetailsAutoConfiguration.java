@@ -1,5 +1,7 @@
 package net.smartcosmos.userdetails.autoconfigure;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +20,7 @@ import net.smartcosmos.userdetails.service.UserDetailsService;
  */
 @Configuration
 @ComponentScan(basePackages = "net.smartcosmos.userdetails")
+@Slf4j
 public class UserDetailsAutoConfiguration {
 
     /**
@@ -31,6 +34,7 @@ public class UserDetailsAutoConfiguration {
     @Autowired
     public AuthenticateUserService authenticateUserService(UserDetailsService userDetailsService) {
 
+        log.info("Default AuthenticateUserService being started.");
         return new AuthenticateUserServiceDefault(userDetailsService);
     }
 
@@ -43,11 +47,12 @@ public class UserDetailsAutoConfiguration {
     @ConditionalOnMissingBean
     public javax.validation.Validator localValidatorFactoryBean() {
 
+        log.info("LocalValidatorFactoryBean being started.");
         return new LocalValidatorFactoryBean();
     }
 
     /**
-     * If no Validator is available, use the {@link BCryptPasswordEncoder}.
+     * If no Password Encoder is available, use the {@link BCryptPasswordEncoder}.
      *
      * @return the Password Encoder bean
      */
@@ -55,6 +60,7 @@ public class UserDetailsAutoConfiguration {
     @ConditionalOnMissingBean
     PasswordEncoder passwordEncoder() {
 
+        log.info("BCryptPasswordEncoder being started.");
         return new BCryptPasswordEncoder();
     }
 }
