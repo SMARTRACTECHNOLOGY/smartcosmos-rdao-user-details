@@ -18,8 +18,8 @@ public class AuthenticateDetails {
     public static final String SCOPE = "scope";
     public static final String USERNAME = "username";
 
-    private static final int VERSION = 1;
-    private final int version = VERSION;
+    private static final int VERSION_1 = 1;
+    private final int version = VERSION_1;
 
     @JsonProperty(GRANT_TYPE)
     private String grantType;

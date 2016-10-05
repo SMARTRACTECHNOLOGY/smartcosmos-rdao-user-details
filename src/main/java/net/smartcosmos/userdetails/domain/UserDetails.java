@@ -32,8 +32,8 @@ public class UserDetails {
     public static final String PASSWORD_HASH = "passwordHash";
     public static final String AUTHORITIES = "authorities";
 
-    private static final int VERSION = 1;
-    private final int version = VERSION;
+    private static final int VERSION_1 = 1;
+    private final int version = VERSION_1;
 
     @NotEmpty
     @JsonProperty(TENANT_URN)

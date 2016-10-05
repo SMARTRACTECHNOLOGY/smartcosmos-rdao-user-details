@@ -25,8 +25,8 @@ public class ErrorResponse {
     public static final String CODE = "code";
     public static final String MESSAGE = "message";
 
-    private static final int VERSION = 1;
-    private final int version = VERSION;
+    private static final int VERSION_1 = 1;
+    private final int version = VERSION_1;
 
     @JsonProperty(CODE)
     private Integer code;

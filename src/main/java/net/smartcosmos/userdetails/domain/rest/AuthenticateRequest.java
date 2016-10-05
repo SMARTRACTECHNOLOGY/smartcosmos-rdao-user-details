@@ -31,8 +31,8 @@ public class AuthenticateRequest {
     public static final String CREDENTIALS = "credentials";
     public static final String NAME = "name";
 
-    private static final int VERSION = 1;
-    private final int version = VERSION;
+    private static final int VERSION_1 = 1;
+    private final int version = VERSION_1;
 
     @JsonProperty(DETAILS)
     private AuthenticateDetails details;
