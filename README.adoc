@@ -5,6 +5,7 @@ ifdef::env-github[:REPO: smartcosmos-user-details]
 ifdef::env-github[:BRANCH: master]
 
 image::https://jenkins.smartcosmos.net/buildStatus/icon?job={USER}/{REPO}/{BRANCH}[Build Status, link=https://jenkins.smartcosmos.net/job/{USER}/job/{REPO}/job/{BRANCH}/]
+image::https://travis-ci.org/{USER}/{REPO}.svg?branch={BRANCH}[Build Status, link=https://travis-ci.org/{USER}/{REPO}]
 
 The SMART COSMOS User Details library provides the common `/authenticate` endpoint used by the https://github.com/SMARTRACTECHNOLOGY/smartcosmos-auth-server[Auth Server] to retrieve user details for token generation, and also includes the corresponding request and response models.
 
