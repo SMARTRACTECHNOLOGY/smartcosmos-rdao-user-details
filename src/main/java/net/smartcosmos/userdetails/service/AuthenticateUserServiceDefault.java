@@ -46,4 +46,25 @@ public class AuthenticateUserServiceDefault implements AuthenticateUserService {
             return invalidUsernameOrPassword();
         }
     }
+
+    @Override
+    public ResponseEntity<?> isUserActive(String username) {
+
+        log.debug("Requested information on username {} ", username, username);
+
+        try {
+            UserDetails userDetails = userDetailsService.getUserDetails(username);
+
+            if (userDetails != null) {
+                log.info("Validation of authentication response for user {} : valid", username);
+                return success(userDetails);
+            }
+
+            log.info("Validation of authentication response for user {} : invalid", username);
+            return invalidDataReturned();
+        } catch (AuthenticationException e) {
+            log.info("Authenticating user {} failed (no longer active?). Exception: {}", username, e.toString());
+            return invalidUsernameOrPassword();
+        }
+    }
 }
