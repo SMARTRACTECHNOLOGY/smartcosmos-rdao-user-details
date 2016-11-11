@@ -16,4 +16,6 @@ public interface AuthenticateUserService {
      * @return the response entity
      */
     ResponseEntity<?> authenticateUser(AuthenticateRequest request);
+
+    ResponseEntity<?> isUserActive(String username);
 }
