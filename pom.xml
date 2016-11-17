@@ -4,12 +4,12 @@
     <parent>
         <groupId>net.smartcosmos</groupId>
         <artifactId>smartcosmos-framework-parent</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
+        <version>3.1.0</version>
         <relativePath></relativePath>
     </parent>
 
     <artifactId>smartcosmos-user-details</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>SMART COSMOS RDAO for User Details</name>
     <description>REST Controller for hooking into the DAO implementations</description>
 
