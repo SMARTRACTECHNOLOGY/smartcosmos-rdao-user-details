@@ -5,11 +5,11 @@
         <groupId>net.smartcosmos</groupId>
         <artifactId>smartcosmos-framework-parent</artifactId>
         <version>3.1.0</version>
-        <relativePath></relativePath>
+        <relativePath />
     </parent>
 
     <artifactId>smartcosmos-user-details</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>SMART COSMOS RDAO for User Details</name>
     <description>REST Controller for hooking into the DAO implementations</description>
 
@@ -88,6 +88,6 @@
         <connection>scm:git:ssh://git@github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details.git</developerConnection>
         <url>https://github.com/SMARTRACTECHNOLOGY/smartcosmos-user-details/tree/master/</url>
-        <tag>v0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 </project>
