@@ -1,5 +1,5 @@
 = SMART COSMOS User Details Release Notes
 
-== UNRELEASED
+== Release 0.0.1 (November 17, 2016)
 
 Initial release.
