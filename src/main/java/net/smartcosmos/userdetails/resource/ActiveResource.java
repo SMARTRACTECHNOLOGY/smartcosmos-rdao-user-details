@@ -25,7 +25,7 @@ public class ActiveResource {
         service = authenticateUserService;
     }
 
-    @RequestMapping(value = "active/{username}",
+    @RequestMapping(value = "active/{username:.+}",
                     produces = APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<?> authenticate(@PathVariable("username") String username) {
 
