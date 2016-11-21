@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>smartcosmos-user-details</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>SMART COSMOS RDAO for User Details</name>
     <description>REST Controller for hooking into the DAO implementations</description>
 
