@@ -1,12 +1,14 @@
 = SMART COSMOS User Details Release Notes
 
-== UNRELEASED
+== Release 0.0.2 (November 21, 2016)
 
 === New Features
 
 No new features are added in this release.
 
 === Bugfixes & Improvements
+
+- OBJECTS-1111 User Details active endpoint partially truncates username in case it contains "."
 
 == Release 0.0.1 (November 17, 2016)
 
